@@ -1,0 +1,959 @@
+var arr = [1, 2, 3, 4,],
+
+arr.forEach(function(value){
+    console.log(value);
+})
+
+
+var ans = arr.map(function(value){
+    return value * 2;
+})
+
+var ans = arr.filter(function(value){
+    return value===3;
+})
+
+var ans = arr.reduce(function(accumulator, key){
+    return accumulator + key;
+},0)
+
+var ans = arr.reduce(function(acc, val){
+    return acc * val;
+}, 1)
+
+var arr = [1,2,3,4,5];
+
+var ans = arr.reduce(function(accumulator, value){
+    return accumulator + value;
+},0)
+
+var i = 10;
+while(i>0){
+    console.log(i);
+    i--;
+}
+
+var i = 3;
+while(i<31){
+    console.log(i);
+    i+=3;
+}
+
+
+var str = "javascript";
+
+for (var i of str){
+    console.log(i);
+}
+
+//sorting a-b = assending.............b-a = descending
+
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var ans = [...new Set(arr)];
+var newarr = arr.sort(function(a, b){
+    return b - a;
+})
+ console.log(newarr[1]);
+
+ //cao write in other way
+
+ var arr = [1, 2, 3, 4, 5, 6, 85, 7, 8, 9, 10];
+ console.log([...new Set(arr)].sort(function (a, b){
+        return b - a;
+    })[1]);
+
+
+    // another problem
+
+    var arr = [1, 2, 300, 45, 5, 60, 7, 8, 9, 10];
+ 
+    var arr2 = [];
+
+    for ( var  i =arr.lrngth-1; i >= 0; i-- ){
+        arr2.push(arr[i]);
+    }
+
+    // counting repeation of numbers
+
+    let arr = [1, 2, 300, 45, 5, 60, 7, 8];
+    var obj = {};
+    arr.forEach(function(val){
+        obj[val] === undefined ? (obj[val] = 1) : obj[val]++;
+    })
+
+
+    // Create a function that takes another function as an argument and calls it after 3 seconds (HOF + Callback).
+
+    function callerfnc (fn){
+        setTimeout(fn, 3000);
+    }
+
+    callerfnc(function(){
+        console.log("Hello");
+    })
+
+    // Implement your own version of `.map()` as a higher-order function.
+
+    var arr = [1,2,3,4,5,6];
+    
+    function mapkicopy(arr, fnc){
+        var newarr = [];
+        for (var i = 0; i < arr.length; i++){
+            newarr.push(fnc(arr[i]));
+        }
+
+
+        return newarr;
+
+    }
+
+    mapkicopy(arr, function (value){
+        return value * 2;
+    })
+
+
+    // Write a function that uses closures to create a counter
+    
+    function counter(){
+        let count = 0;
+        return function(){
+            count++;
+            console.log(count);
+        }
+    }
+
+    var fn = counter();
+    fn();
+    fn();
+
+    // Implement a function that limits how many times another function can be called (Closure + HOF).
+
+    fnlimiter(fn, limit){
+        let totalcalled = 0;
+        return function(){
+            if(totalcalled < limit){
+                totalcalled++;
+                fn();
+            }
+
+        }
+
+    }
+    let limiter = fnlimiter(function(){
+        console.log("heyy")
+    },3);
+    limiter();
+    limiter();
+    limiter();
+    limiter();
+
+    // Create a function that takes a callback and executes it after every `n` seconds indefinitely.
+
+    function barbarchlo(fn, time){
+        setInterval(fn, time*1000);
+    }
+    barbarchlo(function(){
+        console.log("hello");
+    }, 2)
+
+    // implement a function that returns a function with a preset greeting (closure)
+
+    function greetkro(greeting){
+        return function(name){
+            console.log(`${greeting} ${name}`);
+        };
+    }
+
+    var greetingfnc = greetkro("Hello");
+    greetingfnc("prashant");
+    greetingfnc("rohit");
+
+    // Implement a function that takes a callback and only executes it once (HOF + Closure)
+
+    function onlyOnceCaller(cb){
+        let executed = false;
+        return function(){
+            if(!executed){
+                executed = true;
+                cb();
+                
+            }
+            else{
+                console.error("Already executed");
+            }
+        }
+    }
+    var newfnc = onlyOnceCaller(function(){
+        console.log("Hello");
+    })
+    newfnc();
+
+    // Implement a function that throttles another function (HOF + Closures)
+
+    function throt(fn, delay){
+        let lastcall = 0;
+        return function(){
+            let current = Date.now();
+            if(current - lastcall >= delay){
+                lastcall = current;
+                fn();
+            }
+        }
+    }
+    var newfnc = throt(function(){
+        console.log("will run in 2 sec");
+    }, 2000)
+
+    newfnc();
+
+    //dsa
+
+    let a = 10;
+    let b = 20;
+
+    let temp = a;
+    a = b;
+    b = temp;
+    console.log(a, b);
+
+    //2nd way
+    let a = 10;
+    let b = 20;
+
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    console.log(a, b);
+    //3rd way
+    let a = 10;
+    let b = 20;
+    [a, b] = [b, a];
+    console.log(a, b);
+
+    //leap year
+
+    let year = Number(prompt("enter year"))
+    let isLeap = false;
+
+    if(year%4==0){
+        if(year%100==0){
+            if(year%400==0) isLeap = true
+            else isLeap = false
+        }else{
+            isLeap = true
+        }
+    
+        
+    }else  isLeap = false
+
+    console.log(isLeap ? "leap year" : "not leap year") 
+
+// another way
+let year = Number(prompt("enter year"))
+let isLeap = false;
+
+if(year%4==0 && year%100!=0 || year%400==0){
+    isLeap = true
+}else{
+    isLeap = false
+}
+console.log(isLeap ? "leap year" : "not leap year")
+
+//shop discount
+let amount = Number(prompt("enter a number"))
+let dis = 0;
+if(amount>=0 && amount<=5000) dis = 0;
+else if(amount>5000 && amount<=15000) dis = 10;
+else if(amount>15000 && amount<=25000) dis = 20;
+else console.log("invalid amount");
+let total = amount - (amount * dis / 100);
+console.log(total);
+
+//electric bill
+
+let unit = Number(prompt("enter a unit"));
+let amount = 0;
+if(unit>0 && unit<=100){
+    amount = unit * 4.2;
+}else if(unit>100 && unit<=200){  //120
+    amount = (100 * 4.2) + (unit-100) * 6
+}else if(unit>200 && unit<=400){   //250
+    amount = (100 * 4.2) + (100 * 6) + (unit - 200)*8
+}else if(unit>400){   //550
+    amount = (100 * 4.2) + (100 * 6) + (200)*8 + (unit - 400)* 13
+}
+console.log(amount);
+
+// in optimized way
+
+let unit = Number(prompt("enter a unit"));
+let amount =0;
+
+if(unit>400){
+    amount = (unit - 400) * 13;
+    unit = 400
+}
+if(unit>200 && unit<=400){
+    amount = amount + (unit-200) * 8;
+    unit = 200
+}
+if(unit>100 && unit<=200){
+    amount = amount + (unit-100) * 6;
+    unit = 100
+}
+if(unit>0 && unit<=100){
+    amount = amount + unit * 4.2;
+}
+console.log(amount);
+
+
+// loops 2 types:> entry control(for,while) || exit control(do while)
+
+//code to check if the number is prime number or not
+
+let n = Number(prompt("enter a number"));
+let isPrime = true;
+for (let i = 2; i <= n/2; i++){
+    if(n%i==0){
+        isPrime = false;
+        break;
+    }
+}
+console.log(isPrime ? "prime" : "not prime");
+//code to check if the number is prime number or not
+let n = Number(prompt("Enter a number"));
+let isPrime = isPrimeFun(n)
+if (isPrime) console.log("Prime");
+else console.log("Not Prime");
+
+function isPrimeFun(n){
+    if(n<=1) return false
+    if(n==2) return true
+    if(n%2==0) return false;
+    for (let i = 3; i <=Math.floor(Math.sqrt(n)); i+=2)
+    {
+        if(n%i==0) return false
+    }
+}
+
+// code to count sum of the digits of a number
+
+let n = Number(prompt("enter a number"));
+let sum = 0;
+while(n>0){
+    let rem = n%10;
+    sum = sum + rem;
+    n = Math.floor(n/10);
+}
+console.log(sum);
+
+//code to reverse a number
+
+let n = Number(prompt("enter a number"));
+let rev = 0;
+while(n>0){
+    let rem = n%10;
+    rev = rev * 10 + rem;
+    n = Math.floor(n/10);
+}
+console.log(rev);
+
+//code to check if the number is automorphic
+
+let n = Number(prompt("enter a number"));
+let copy = n;
+let sq = n * n;
+let count = 0;
+while(n>0){
+    count++;
+    n = Math.floor(n/10);
+}
+if(sq%Math.pow(10, count)==copy) console.log("automorphic");
+else console.log("not automorphic");
+
+//guess the number
+
+let com = Math.floor(Math.random() * 100) + 1;
+
+let userInput;
+do{
+    userInput = Number(prompt("enter a number"));
+    if(isNaN(userInput) || userInput<0 || userInput>100){
+        console.log("invalid input");
+        continue
+    }
+    if(userInput>com) console.log("too high");
+    else if(userInput<com) console.log("too low");
+    else console.log("you guessed it right");
+}while(userInput!=com);
+
+//print pattern
+// A
+// AB
+// ABC
+// ABCD
+// ABCDE
+const prompt = require('prompt-sync')()
+let n = prompt("enter a number");
+for(let i=1; i<=n; i++){
+    let temp = 65;
+    for(let j=1; j<=i; j++){
+        process.stdout.write(String.fromCharCode(temp));
+        temp++;
+    }
+    console.log();
+}
+
+//print pattern
+//    *
+//   **
+//  ***
+// ****
+//***** 
+let prompt = require('prompt-sync')();
+let n = prompt("enter a number");
+for(let i=1; i<=n; i++){
+    for(let j=1; j<=n-i; j++){
+        process.stdout.write("  ");
+    }
+    for(let j=1; j<=i; j++){
+        process.stdout.write("* ");
+    }
+    console.log();
+}
+
+//print star pattern
+//  x   
+let prompt = require('prompt-sync')();
+let n = Number(prompt("enter a number"));
+for(let i=1;i<=n;i++){
+    for(j=1;j<=n;j++){
+        if(i==j || i+j===n+1){
+            process.stdout.write("* ");
+        }else{
+            process.stdout.write("  ");
+        }
+    }
+    console.log();
+}
+
+//print pattern
+// V
+let prompt = require('prompt-sync')();
+let n = Number(prompt("enter a number"));
+for(let i =1;i<n;i++){
+    for(let j=1;j<=(n*2)-1;j++){
+        if(i==j || i+j === n*2){
+            process.stdout.write("* ");
+        }else process.stdout.write("  ");
+    }
+    console.log();
+}
+
+// code for strong number
+let prompt = require("prompt-sync")();
+let n = Number(prompt("enter a number"));
+let copy = n
+let ans = 0;
+while(n>0){
+    let rem = n % 10;
+    let fact = 1;
+    for(let i=1; i<=rem; i++){
+        fact = fact * i;
+    }
+    ans = ans + fact;
+    n = Math.floor(n/10);
+}
+if(copy==ans) console.log("strong number");
+else console.log("not strong number");
+
+//array
+ let prompt = require("prompt-sync")();
+ let size = Number(prompt("enter a size"));
+ let arr = new Array(size);
+    for(let i=0; i<arr.length; i++){
+        arr[i] = Number(prompt("enter a number"));
+    }
+    console.log(arr);
+//array
+
+
+//2nd max number
+let arr =[28, 6, 74, 48, 84, 79]
+let max = Math.max(arr[0] , arr[1]);
+let sMax = Math.min(arr[0] , arr[1]);
+
+for(let i=2 ;i<arr.length;i++){
+    if(arr[i]>max){
+        sMax = max;
+        max = arr[i]
+    
+    }else if(arr[i]>sMax && arr[i]!=max){
+        sMax = arr[i];
+    }
+}
+console.log("second max" + sMax);
+
+//reverse array
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+let temp = new Array(arr.length)
+let i =0;
+for(let j = arr.length - 1; j >= 0; j--){
+    temp[i] = arr[j];
+    i++;
+}
+
+console.log(temp);
+//another way
+let arr = [1,2,3,4,5];
+let i = 0 , j = arr.length-1;
+while(i<j){
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    i++;
+    j--;
+}
+console.log(arr);
+//sorting array 0 to one side and 1s to the other side
+let arr = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1];
+let i = 0, j = 0;
+while(i<arr.length){
+    if(arr[i]==0){
+        let temp = arr[i]
+        arr[i] = arr[j]
+        arr[j] = temp
+        j++
+    }
+    i++
+}
+console.log(arr);
+//left rotation
+let arr = [1,2,3,4,5];
+let temp = arr[0];
+for(let i=0; i<arr.length; i++){
+    arr[i] = arr[i+1];
+}
+arr[arr.length-1] = temp;
+console.log(arr);
+
+//right rotation
+let arr = [1,2,3,4,5];
+let temp = arr[arr.length-1];
+for(let i=arr.length-1; i>0; i--){
+    arr[i] = arr[i-1];
+}
+arr[0] = temp;
+console.log(arr);
+
+//rotation with k number of times
+let prompt = require("prompt-sync")();
+let arr = [1,2,3,4,5]
+let k = Number(prompt("enter a number"))
+k = k % arr.length;
+Reverse(arr, 0, k-1);
+Reverse(arr, k, arr.length-1);
+Reverse(arr, 0, arr.length-1);
+console.log(arr);
+function Reverse(arr, i, j){
+    while(start<end){
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        i++;
+        j--;
+    }
+}
+//rotation with k number of times
+
+//linear search
+let prompt = require("prompt-sync")();
+let target = Number(prompt("enter a target value"));
+let arr = [10,5,3,15,19,69,20]
+let index = -1;
+for (let i = 0; i < arr.length; i++) {
+    if(arr[i] == target){
+        index = i;
+        break
+    },
+}
+if(index == -1) console.log("elemet is not in the target array");  
+        
+    else console.log("element is in the target array at index" + index); 
+
+// end of linear search
+
+//binary search
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+if(binarySearch(arr,8) === -1)console.log("not found");
+else console.log("found at index")
+function binarySearch(arr, target){
+    let s = 0, e = arr.length-1;
+    while(s<=e){
+        let mid = Math.floor(s+e)/2
+        if(arr[mid] == target)return mid
+        else if(arr[mid] > target) e = mid - 1;
+        else s = mid + 1;
+    }
+    return -1
+}
+
+
+
+//bubble sorting
+let arr = [1 , 4 , 3 , 2 , 9 , 10]
+let n = arr.length
+for(let i = 0; i < n-1; i++){
+   for(let j =0; j<n-i-1;j++){
+    for(arr[j]>arr[j+1]){
+        let temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] = temp;
+    }
+   }
+}
+console.log(arr);
+//end of bubble sorting
+
+//selection sorting
+let arr = [1 , 4 , 3 , 2 , 9 , 10]
+for(let i =0; i<arr.length-1; i++){
+    let small = i;
+    for(let j = i+1; j<arr.length-1; j++){
+        if(arr[small]>arr[j]){
+            small = j;
+        }
+    }
+    if(i != small){
+        let temp = arr[i]
+        arr[i] = arr[small]
+        arr[small] = temp
+    }
+}
+console.log(arr);
+// end of selection sorting
+
+//start of insertion sort
+let arr = [1 , 4 , 3 , 2 , 9 , 10]
+for(let i=1; i<arr.length; i++){
+    let key = arr[i];
+    let j = i-1;
+    while(j>=0 && arr[j]>key){
+        arr[j+1] = arr[j];
+        j--;
+    }
+    arr[j+1] = key;
+}
+console.log(arr);
+
+//end of insertion sort
+
+
+//time complexity for 1<=n<=10^4
+O(1),log n, n log n, O(n),O(n^2)
+//time complexity for 10^5<=n<=10^6
+O(1),log n, n log n, O(n)
+//time complexity for 10^8<=n<=10^9
+log n, O(1)
+
+
+//multi-dimensional 2-D array
+let arr = [[1,2,3],[4,5,6],[7,8,9]];
+for(let i=0;i<arr.length; i++){
+    for(let j=0;j<arr[i].length; j++){
+        process.stdout.write(`${arr[i][j]} `);
+    }
+    console.log();
+}
+//end of multi-dimensional 2-D array
+
+// example: var arr = [[1,2,3],[4,5,6],[7,8,9]];
+
+//multi-dimensional 2-D array dynamically
+let prompt = require("prompt-sync")();
+let size = Number(prompt("enter  array size"))
+let arr = new Array(size);
+for(let i=0; i<arr.length; i++){
+    let innerArraySize = Number(prompt("enter inner array size"));
+    arr[i] = new Array(innerArraySize);
+}
+for(let i=0; i<arr.length; i++){
+    for(let j=0; j<arr[i].length; j++){
+        arr[i][j] = Number(prompt("enter element"));
+    }
+}
+console.log(arr);
+//end of multi-dimensional 2-D array dynamically
+
+
+
+//start of 3-D array
+let arr = [[[1,2,3],[4,5,6]],[[7,8,9,],[10,11,12]],[[13,14,15],[16,17,18]]];
+
+//end of  3-D array
+
+//start of diagonal sum in array 
+let arr = [
+    [1,2,3],[4,5,6],[7,8,9]
+];
+let leftDiagonalSum = 0;
+let rightDiagonalSum = 0;
+for(let i=0; i<arr.length; i++ ){
+    for(let j=0; j<arr[i].length; j++){
+        if(i==j) leftDiagonalSum += arr[i][j];
+        if(i+j == arr.length-1) rightDiagonalSum += arr[i][j];
+    }
+}
+console.log(leftDiagonalSum);
+console.log(rightDiagonalSum);
+//end of diagonal sum in array
+
+
+//start of zagged array
+let prompt = require("prompt-sync")();
+let arr = new Array(3);
+for(let i=0; i<arr.length; i++){
+    let size = Number(prompt("inner array size"));
+    arr[i] = new Array(size);
+}
+for(let i=0; i<arr.length; i++){
+    for(let j=0; j<arr[i].length; j++){
+        arr[i][j] = Number(prompt("enter array element"));
+
+    }
+}
+console.log(arr);
+//end of zagged array
+
+
+//2-D array in one line
+let arr = Array.from({length:3}, ()=> Array(4).fill(0));
+
+console.log(arr);
+
+
+// START OF STRING
+//reverse the string
+let s = "seriyans"
+let rev = ""
+for(let i = s.length - 1; i >= 0; i--){
+    rev = rev + s.charAt(i);
+}
+console.log(rev);
+//end of reverse the string
+
+//start of string palindrome
+let promt = require("prompt-sync")();
+let s = prompt("enter a string");
+let isPalindrome = true;
+let i=0 , j = s.length - 1;
+while(i<j){
+    if(s[i]!= s[j]){
+        isPalindrome = false;
+        break;
+
+    }
+    i++
+    j--
+}
+console.log(isPalindrome ? "palindrome" : "not palindrome");
+//end of string palindrome
+
+//toggle each character of the string
+//A to a and a to A
+let prompt = require("prompt-sync")();
+let s = prompt("enter a string");
+console.log(s);
+let ans = "";
+for(let i=0; i<s.length; i++){
+    let asci = s.charCodeAt(i);
+    if(asci>=65 && asci<=90){
+        ans = ans + String.fromCharCode(asci + 32);
+    }
+    else if(asci>=97 && asci<=122){
+        ans = ans + String.fromCharCode(asci - 32);
+    }
+}
+console.log(ans);
+//end of toggle each character of the string
+
+
+//Q39. Take an array of strings words and a string prefix. print the number of strings in words that start with the given prefix.
+// let words = ["apple", "banana", "apricot", "grape", "avocado"];pref="ap"
+
+let word = ["apple", "banana", "apricot", "grape", "avocado"]
+let s = "ap";
+let count = 0;
+for(let i = 0; i<word.length;i++){
+    if(word[i].startsWith(s)) count++;
+}
+console.log(count);
+//end of Q39
+
+
+// Q40. capitalize first and last character of each word in a string.
+// // let s = "hello bhai"
+// HellO BhaI
+let s = "hello bhai kya haal chaal";
+let ans = "";
+let arrStr = s.split(" ");
+for(let i=0;i<arrStr.length;i++){
+    let word = arrStr[i];
+    if(word.length<=2) ans = ans + word.toLocaleUpperCase()+" ";
+    else{
+        ans = ans + word.charAt(0).toUpperCase() + word.substring(1,word.length-1) +
+         word.charAt(word.length-1).toUpperCase()+" ";
+    }
+}
+console.log(ans);
+
+//end of question 40
+
+
+//accept a string and print the frequency of each character in the string
+
+let prompt = require('prompt-sync')();
+let s = prompt("enter a string")
+let freqArr = new Array(123);
+for(let i=0;i<s.length;i++){
+    let ascii = s.charCodeAt(i);
+    freqArr[ascii] = freqArr[ascii]+1;
+}
+for(let i=0;i<freqArr.length;i++){
+    if(freqArr[i]>0){
+        console.log(String.fromCharCode(i)+"->"+freqArr[i]);
+    }
+}
+console.log(freqArr);
+//end of frequency of each character in the string
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+    
+
+
