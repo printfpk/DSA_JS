@@ -830,6 +830,44 @@ console.log(freqArr);
 //end of frequency of each character in the string
 
 
+//Q62. Check two strings are anagrams or not.
+//  Anagrams words have the same word length & same character count 
+//  Examples of anagrams:arc and Car, listen and silent, evil and live, etc.
+
+let prompt = require("prompt-sync")();
+let s1 = prompt("enter first string")
+let s1 = prompt("enter second string")
+let freqArr = new Array(123).fill(0);
+if(s1.length != s2.length){
+    console.log("not anagrams");
+}else{
+    for(let i=0;i<s1.length;i++){
+        let ascii = s1.charCodeAt(i);
+        freqArr[ascii] = freqArr[ascii]+1;
+    }
+    
+    for(let i=0;i<s2.length;i++){
+        let ascii = s2.charCodeAt(i);
+        freqArr[ascii] = freqArr[ascii]-1;
+    }
+    for(let i=0;i<freqArr.length;i++){
+        if(freqArr[i]!=0){
+            isAnagram = false;
+            break;
+        }
+    }
+
+    if(isAnagram) console.log("anagrams")
+    else console.log("not anagrams")
+    
+}
+let isAnagram = true;
+//end of Q62
+
+
+
+
+
 
 
 
