@@ -864,11 +864,84 @@ if(s1.length != s2.length){
 let isAnagram = true;
 //end of Q62
 
+//leetcode 1832 
+// Check if the sentence is a pangram
+// A pangram is a sentence that contains every letter of the English alphabet at least once.
+var checkIfPangram = function(sentence){
+    let set = new Set();
+    for(let i=0;i<sentence.length;i++){
+        let ch = sentence.charAt(i)
+        set.add(ch);
+    }
+    return set.size === 26
+};
+
+//end of leetcode 1832
+
+//leetcode 771 
+// Jewels and Stones
+// You're given strings jewels representing the types of stones that are jewels, and stones representing the stones you have. Each character in stones is a type of stone you have. You want to know how many of the stones you have are also jewels.
+var numJewelsInStones = function(jewels, stones){
+    let set = new Set();
+    for(let i=0;i<jewels.length;i++){
+        set.add(jewels.charAt(i));
+
+    }
+    let count = 0;
+    for(let i=0;i<stones.length;i++){
+        let ch = stones.charAt(i);
+        if(set.has(ch)) count++;
+    }
+    return count;
+}
+//end of leetcode 771
 
 
 
 
+//leetcode 202
+// Happy Number
+// A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle that does not include 1. Those numbers for which this process ends in 1 are happy.
 
+var isHappy = function(n){
+    let set = new Set();
+    while(true){
+        let sum = 0;
+        while(n>0){
+            let rem = n%10;
+            sum = sum + (rem*rem);
+            n = Math.floor(n/10)
+        }
+        if(sum == 1) return true;
+        if(set.has(sum)) return false;
+        else set.add(sum);
+
+        n = sum;
+    }
+
+    return false;
+};
+
+//end of leetcode 202
+
+
+
+
+//problem on set ... counting the frequency of each character in the string
+
+let arr = [1,10,2,4,2,2,6,1,1,10];
+let map = new Map();
+
+for(let i=0;i<arr.length;i++){
+    if(map.has(arr[i])){
+        map.set(arr[i], map.get(arr[i])+1)
+
+    }else map.set(arr[i],1);
+
+    
+}
+console.log(map);
+//end of problem on set ... counting the frequency of each character in the string
 
 
 
