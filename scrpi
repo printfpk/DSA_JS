@@ -944,6 +944,69 @@ console.log(map);
 //end of problem on set ... counting the frequency of each character in the string
 
 
+//leetcode 1 Two Sum
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+var twoSum = function(nums, target){
+    let map = new Map();
+    let ans = [-1,-1];
+    for(let i=0;i<nums.length;i++){
+        if(map.has(target-nums[i])){
+            ans[0]=i;
+            ans[1]= map.get(target-nums[i]);
+            return ans;
+        }else map.set(nums[i], i);
+    }
+    return ans;
+};
+//end of leetcode 1 Two Sum
+
+
+
+
+
+//leetcode 2351 // First Letter to Appear Twice
+// Given a string s consisting of lowercase English letters, return the first letter to appear twice.
+
+var repeatedCharacter = function(s) {
+    let set = new Map()
+    for(let i=0;i<s.length;i++){
+        let ch = s.charAt(i);
+        if(map.has(ch)){
+            map.set(ch, map.get(ch)+1)
+            if(map.get(ch)== 2) return ch;
+        }else map.set(ch, 1);
+    }
+};
+//end of leetcode 2351 // First Letter to Appear Twice
+
+
+
+
+
+
+
+//leetcode 2418 // Sort the People
+// You are given an array of strings names representing the names of people and an array of integers heights representing their heights, both of length n.
+
+var sortPeople = function(names, heights){
+    let map = new Map()
+    for(let i=0;i<names.length;i++){
+        map.set(heights[i], names[i]);
+    }
+    heights.sort((a,b)=>b-a)
+    let ans = new Array(names.length);
+    for(let i=0;i<heights.length;i++){
+        ans[i]= map.get(heights[i])
+    }
+    return ans;
+};
+
+// end of leetcode 2418 // Sort the People
+
+
+
+
 
 
 
